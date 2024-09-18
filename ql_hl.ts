@@ -2,7 +2,7 @@
  * @Author: renxia
  * @Date: 2024-02-22 17:05:00
  * @LastEditors: renxia
- * @LastEditTime: 2024-03-29 09:31:00
+ * @LastEditTime: 2024-09-10 11:58:06
  * @Description: 哈啰签到。奖励：积攒奖励金可换手机话费重置抵用券
 
  cron: 50 8 * * *
@@ -30,11 +30,12 @@ export async function signCheckIn(hlToken: string) {
     if (signRes.data.didSignToday === true) {
       $.log(`今日已签到成功 金币+${signRes.data.bountyCountToday}。${signRes.data.title}`);
     } else {
+      console.log(signRes);
       $.log(`今日未签到，请检查TOKEN是否过期。`, 'error');
     }
   } else {
-    console.error(signRes);
     $.log(`签到失败：${JSON.stringify(signRes.msg)}`, 'error');
+    console.error(signRes);
     return;
   }
 
