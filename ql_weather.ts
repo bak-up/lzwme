@@ -1,8 +1,8 @@
 /*
  * @Author: renxia
- * @Date: 2025-04-17 16:50:46
+ * @Date: 2025-04-17 20:50:46
  * @LastEditors: renxia
- * @LastEditTime: 2025-04-17 17:25:30
+ * @LastEditTime: 2025-04-17 21:16:19
  * 每日天气推送。API 参考： https://www.sojson.com/api/weather.html
  cron: 30 7 1 1 1
  new Env('每日天气')
@@ -78,7 +78,7 @@ async function start(city_code?: string) {
   const formattedSevenDays = sevenDaysWeather.map(day => day.join(' ')).join('\n');
   const body = `${msg}\n\n${formattedSevenDays}`;
 
-  await sendNotify(`$${data.cityInfo.city}今日天气`, body, { notifyType: 2, isPrint: true });
+  await sendNotify(`${data.cityInfo.city}今日天气`, body, { notifyType: 2, isPrint: true });
 }
 
 start()
